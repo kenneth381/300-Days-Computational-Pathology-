@@ -23,6 +23,7 @@ This repository tracks my daily progress as I transition from clinical laborator
 300-Days-Computational-Pathology/
 ├── Month-01-R-Foundations/
 │   ├── day01_r_basics.R
+│   ├── day02_matrices_factors.R
 │   └── ...
 └── README.md
 
@@ -32,6 +33,9 @@ This repository tracks my daily progress as I transition from clinical laborator
 
 Day 01 | Topic: R Basics & Data Structures | Language: R
 Description: Learned basic variable assignment, vector operations, and constructed a clinical laboratory sample data frame.
+
+Day 02 | Topic: Matrices & Factors in Clinical Data | Language: R
+Description: Structured blood group factors for ABO typing and simulated a 96-well microplate reader absorbance matrix.
 
 ---
 
@@ -56,8 +60,24 @@ clinical_data <- data.frame(
 
 ---
 
+### Day 02: Matrices & Factors in Clinical Data
+- File Directory: Month-01-R-Foundations/day02_matrices_factors.R
+
+Key Concepts Learned Today:
+1. Factors: Converted blood type character vectors into defined categorical factors to enforce strict clinical blood group levels (A, B, AB, O) and perform population frequency counts using table().
+2. Matrices: Built an 8x12 numerical matrix representing optical density (OD) absorbance readings from a 96-well microplate reader (Rows A-H, Columns 1-12).
+3. Matrix Subsetting & Indexing: Extracted row/column slices for assay controls, calculated mean control values, and applied logical thresholding across the entire plate matrix to identify positive diagnostic wells (> 1.2 OD).
+
+Code Summary from Day 02:
+plate_readings <- matrix(
+  round(runif(96, min = 0.150, max = 2.400), 3),
+  nrow = 8, ncol = 12,
+  dimnames = list(Row = LETTERS[1:8], Col = paste0("Col_", 1:12))
+)
+
+---
+
 ## Contact Information
 
 - GitHub Profile: https://github.com/kenneth381
 - Email: kennethappiahnti@gmail.com
-
